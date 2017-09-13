@@ -3,5 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :sushi_rolls
+         
+  has_many :sushi_rolls, dependent: :destroy
+
+  validates_presence_of :first_name, :last_name
 end
